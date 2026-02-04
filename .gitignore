@@ -1,0 +1,8 @@
+Dataset/HAM10000_images_part_1/
+Dataset/HAM10000_images_part_2/
+
+# HistoMNIST CSV datasets
+Dataset/hmnist_28_28_RGB.csv
+Dataset/hmnist_28_28_L.csv
+Dataset/hmnist_8_8_RGB.csv
+Dataset/hmnist_8_8_L.csv
