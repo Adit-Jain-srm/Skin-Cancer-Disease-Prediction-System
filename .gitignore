@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pkl
+*.h5
+
+# Virtual env
+venv/
+__pycache__/
+*.pth
+*.pt
+Dataset/
+data/
+*.csv
+*.jpg
+*.png
+*.pdf
+*.docx
+reports/
+.env/
+
+# Dataset / images
+data/
+dataset/
+*.zip
+*.jpg
+*.png
+
+# Large files
+*.csv
+
+# System
+.DS_Store
+
