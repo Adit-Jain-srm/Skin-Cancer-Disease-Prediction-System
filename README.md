@@ -86,166 +86,160 @@ This project aims to provide an **automated, computer-aided diagnostic system** 
 ### 5.1 Software / Tools
 
 - **OS**: Windows 11 (64-bit) or compatible
-- **Language**: Python 3.x
-- **Core Libraries (example stack)**:
-  - `tensorflow` or `torch`
+- **Language**: Python 3.13+
+- **Core Libraries**:
+  - `torch` 2.6.0 (with CUDA 12.4 support)
+  - `torchvision` 0.21.0
+  - `torchaudio` 2.6.0
   - `opencv-python`
   - `numpy`
   - `scikit-learn`
   - `matplotlib` / `seaborn` (for plots)
-  - `flask` (if using web UI)
-- **Environment**: `venv` / `conda` (recommended)
-- **Optional**: GPU support via CUDA for faster training
+  - `flask` (web UI)
+  - `albumentations` (image augmentation)
+- **Environment**: `venv` (recommended)
+- **GPU Support**: NVIDIA CUDA 12.4 (recommended for training speedup)
 
 ### 5.2 Hardware
 
-- Minimum: 8 GB RAM, dual-core CPU  
-- Recommended: 16 GB RAM, NVIDIA GPU with ≥4 GB VRAM for deep learning training
+- **Minimum**: 8GB RAM, multi-core CPU
+- **Recommended**: 16GB+ RAM, NVIDIA GPU (RTX 3050 Ti or better) with 4GB+ VRAM
+- **Storage**: 5GB+ for dataset and models
 
 ---
 
-## 6. Project Structure (Proposed)
+## 6. Installation & Setup
 
-This is a suggested structure for the repository:
+### 6.1 Prerequisites
 
-```text
-Skin-Cancer-Disease-Prediction-System/
-│
-├─ Dataset/
-│  ├─ raw/                  # Original images (if stored locally)
-│  ├─ processed/            # Preprocessed images (if cached)
-│  ├─ metadata.csv          # Labels / metadata (e.g., HAM10000 CSV)
-│  └─ Placeholder.md        # Dataset documentation / links
-│
-├─ src/
-│  ├─ data/
-│  │  ├─ dataset_manager.py
-│  │  └─ dataloaders.py
-│  ├─ preprocessing/
-│  │  ├─ filters.py
-│  │  └─ augmentations.py
-│  ├─ models/
-│  │  ├─ cnn_baseline.py
-│  │  └─ transfer_learning.py
-│  ├─ training/
-│  │  ├─ train.py
-│  │  └─ evaluate.py
-│  ├─ inference/
-│  │  └─ predict.py
-│  └─ ui/
-│     ├─ app.py             # Flask app (if used)
-│     └─ templates/         # HTML templates
-│
-├─ notebooks/
-│  ├─ EDA.ipynb             # Exploratory data analysis
-│  ├─ Baseline_Model.ipynb
-│  └─ Experiments_*.ipynb
-│
-├─ References/
-│  ├─ SKIN CANCER DISEASE PREDICTION SYSTEM_ Adit Jain.docx
-│  └─ IJCRT25A4490 (1).pdf
-│
-├─ models/
-│  └─ best_model.h5 or best_model.pt
-│
-├─ reports/
-│  ├─ sepm_plan.md
-│  ├─ srs.md
-│  └─ final_report.md
-│
-├─ requirements.txt
-├─ README.md
-└─ LICENSE
+Ensure Python 3.13+ is installed:
+```bash
+python --version
 ```
 
----
-
-## 7. Installation
-
-### 7.1 Clone the Repository
+### 6.2 Clone & Navigate
 
 ```bash
-git clone "<your-repo-url>.git"
-cd "Skin-Cancer-Disease-Prediction-System"
+git clone <repository-url>
+cd Skin-Cancer-Disease-Prediction-System
 ```
 
-### 7.2 Create and Activate Virtual Environment (Windows / PowerShell)
+### 6.3 Create Virtual Environment
 
 ```bash
 python -m venv .venv
-.\.venv\Scripts\activate
 ```
 
-### 7.3 Install Dependencies
+**Activate on Windows:**
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
+**Activate on macOS/Linux:**
 ```bash
+source .venv/bin/activate
+```
+
+### 6.4 Install Dependencies with GPU Support
+
+**For NVIDIA GPU (CUDA 12.4) - Recommended:**
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install -r requirements.txt
 ```
 
-> **Note:** Adjust `requirements.txt` based on the final chosen stack (TensorFlow or PyTorch).
+**For CPU-only (slower training):**
+```bash
+pip install torch torchvision torchaudio
+pip install -r requirements.txt
+```
+
+### 6.5 Verify GPU Setup
+
+```bash
+python check_gpu.py
+```
+
+Expected output when GPU is available:
+```
+✓ CUDA Available: True
+✓ GPU Count: 1
+  GPU 0: NVIDIA GeForce RTX 3050 Ti Laptop GPU
+  Memory: 4.00 GB
+```
 
 ---
 
-## 8. Usage
+## 7. Usage
 
-### 8.1 Training the Model
+### 7.1 Training the Model
 
-Example (to be aligned with your actual `train.py`):
-
+**Use the virtual environment Python:**
 ```bash
-python -m src.training.train ^
-  --data_dir "Dataset" ^
-  --metadata "Dataset/metadata.csv" ^
-  --epochs 20 ^
-  --batch_size 32 ^
-  --model_out "models/best_model.h5"
+.venv\Scripts\python train_phase4.py
 ```
 
-### 8.2 Evaluating the Model
-
+Or if venv is activated:
 ```bash
-python -m src.training.evaluate --model_path "models/best_model.h5"
+python train_phase4.py
 ```
 
-### 8.3 Running Prediction (CLI)
+### 7.2 Making Predictions
 
 ```bash
-python -m src.inference.predict ^
-  --model_path "models/best_model.h5" ^
-  --image_path "path/to/image.jpg"
+python predict.py --image_path path/to/image.jpg
 ```
 
-Output:
-
-- Predicted disease class  
-- Confidence score (e.g., 0.92)
-
-### 8.4 Running Web UI (Optional)
+### 7.3 Running Tests
 
 ```bash
-python -m src.ui.app
+pytest tests/ -v
 ```
-
-Then open `http://127.0.0.1:5000` in a browser, upload an image, and view prediction.
 
 ---
 
-## 9. Functional & Non-Functional Requirements (Summary)
+## 8. Project Structure
 
-- **Functional**
-  - Load labelled skin disease dataset (HAM10000 etc.)
-  - Validate dataset formats and paths
-  - Preprocess images (resize `224×224`, normalize, denoise, augment)
-  - Train, validate, and test CNN model
-  - Predict skin disease class for a new image
-  - Display prediction with confidence score
+```
+Skin-Cancer-Disease-Prediction-System/
+├── src/                          # Core modules
+│   ├── model.py                  # CNN architecture
+│   ├── trainer.py                # Training loop
+│   ├── data_loader.py            # Dataset loading (with GPU support)
+│   ├── metrics.py                # Evaluation metrics
+│   └── utils.py                  # Helper functions
+├── checkpoints/                  # Saved model checkpoints
+├── Dataset/                      # Training data (HAM10000)
+├── train_phase4.py               # Main training script
+├── predict.py                    # Inference script
+├── check_gpu.py                  # GPU verification
+├── requirements.txt              # Python dependencies
+└── README.md                     # This file
+```
 
-- **Non-Functional**
-  - **Performance**: prediction time < 5 seconds on standard hardware
-  - **Usability**: simple upload interface, minimal clicks
-  - **Reliability**: handle invalid images gracefully; consistent results
-  - **Security & Privacy**: no permanent storage of images unless explicitly enabled; no personal data collection
-  - **Scalability**: support additional disease classes and advanced architectures
+---
+
+## 9. GPU Troubleshooting
+
+### Issue: "pin_memory argument is set as true but no accelerator is found"
+
+**Solution:** This is a warning that pin_memory=True is set without GPU. The code now automatically detects GPU availability and sets pin_memory only when CUDA is available.
+
+### Issue: CUDA not detected despite having GPU
+
+**Solution:** Ensure you installed PyTorch with CUDA support:
+```bash
+# Uninstall CPU version
+pip uninstall torch torchvision torchaudio -y
+
+# Install CUDA 12.4 version
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+# Verify
+python check_gpu.py
+```
+
+---
 
 ---
 

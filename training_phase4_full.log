@@ -1,0 +1,526 @@
+2026-04-11 19:37:46,684 - INFO - Using GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU
+2026-04-11 19:37:46,685 - INFO - Initializing dataset and DataLoader...
+2026-04-11 19:37:46,685 - INFO - DatasetManager initialized with target size (224, 224)
+2026-04-11 19:37:46,704 - INFO - Loaded metadata: 10015 samples
+2026-04-11 19:37:46,704 - INFO - Columns: ['lesion_id', 'image_id', 'dx', 'age', 'sex', 'localization']
+2026-04-11 19:37:47,188 - INFO - All 10015 images found \u2713
+2026-04-11 19:37:47,189 - INFO - ============================================================
+2026-04-11 19:37:47,189 - INFO - DATASET STATISTICS
+2026-04-11 19:37:47,189 - INFO - ============================================================
+2026-04-11 19:37:47,191 - INFO - Total samples: 10015
+2026-04-11 19:37:47,192 - INFO - Unique lesions: 7470
+2026-04-11 19:37:47,192 - INFO - Classes: 7
+2026-04-11 19:37:47,192 - INFO - 
+Class Distribution:
+2026-04-11 19:37:47,192 - INFO -   nv                  :  6705 ( 66.9%)
+2026-04-11 19:37:47,192 - INFO -   mel                 :  1113 ( 11.1%)
+2026-04-11 19:37:47,192 - INFO -   bkl                 :  1099 ( 11.0%)
+2026-04-11 19:37:47,192 - INFO -   bcc                 :   514 (  5.1%)
+2026-04-11 19:37:47,192 - INFO -   akiec               :   327 (  3.3%)
+2026-04-11 19:37:47,192 - INFO -   vasc                :   142 (  1.4%)
+2026-04-11 19:37:47,192 - INFO -   df                  :   115 (  1.1%)
+2026-04-11 19:37:47,193 - INFO - 
+Age Statistics:
+2026-04-11 19:37:47,193 - INFO -   Mean: 51.9 years
+2026-04-11 19:37:47,193 - INFO -   Std:  17.0 years
+2026-04-11 19:37:47,193 - INFO -   Min:  0.0 years
+2026-04-11 19:37:47,193 - INFO -   Max:  85.0 years
+2026-04-11 19:37:47,194 - INFO -   Missing: 57
+2026-04-11 19:37:47,194 - INFO - 
+Gender Distribution:
+2026-04-11 19:37:47,195 - INFO -   male      :  5406 ( 54.0%)
+2026-04-11 19:37:47,195 - INFO -   female    :  4552 ( 45.5%)
+2026-04-11 19:37:47,195 - INFO -   unknown   :    57 (  0.6%)
+2026-04-11 19:37:47,197 - INFO - 
+Data Completeness: 99.91%
+2026-04-11 19:37:47,197 - INFO - ============================================================
+2026-04-11 19:37:47,197 - INFO - Loading metadata for stratified split...
+2026-04-11 19:37:47,208 - INFO - Loaded metadata: 10015 samples
+2026-04-11 19:37:47,208 - INFO - Columns: ['lesion_id', 'image_id', 'dx', 'age', 'sex', 'localization']
+2026-04-11 19:37:47,683 - INFO - All 10015 images found \u2713
+2026-04-11 19:37:47,683 - INFO - ============================================================
+2026-04-11 19:37:47,683 - INFO - DATASET STATISTICS
+2026-04-11 19:37:47,683 - INFO - ============================================================
+2026-04-11 19:37:47,684 - INFO - Total samples: 10015
+2026-04-11 19:37:47,685 - INFO - Unique lesions: 7470
+2026-04-11 19:37:47,685 - INFO - Classes: 7
+2026-04-11 19:37:47,685 - INFO - 
+Class Distribution:
+2026-04-11 19:37:47,685 - INFO -   nv                  :  6705 ( 66.9%)
+2026-04-11 19:37:47,685 - INFO -   mel                 :  1113 ( 11.1%)
+2026-04-11 19:37:47,685 - INFO -   bkl                 :  1099 ( 11.0%)
+2026-04-11 19:37:47,685 - INFO -   bcc                 :   514 (  5.1%)
+2026-04-11 19:37:47,685 - INFO -   akiec               :   327 (  3.3%)
+2026-04-11 19:37:47,685 - INFO -   vasc                :   142 (  1.4%)
+2026-04-11 19:37:47,685 - INFO -   df                  :   115 (  1.1%)
+2026-04-11 19:37:47,685 - INFO - 
+Age Statistics:
+2026-04-11 19:37:47,685 - INFO -   Mean: 51.9 years
+2026-04-11 19:37:47,685 - INFO -   Std:  17.0 years
+2026-04-11 19:37:47,686 - INFO -   Min:  0.0 years
+2026-04-11 19:37:47,686 - INFO -   Max:  85.0 years
+2026-04-11 19:37:47,686 - INFO -   Missing: 57
+2026-04-11 19:37:47,687 - INFO - 
+Gender Distribution:
+2026-04-11 19:37:47,687 - INFO -   male      :  5406 ( 54.0%)
+2026-04-11 19:37:47,687 - INFO -   female    :  4552 ( 45.5%)
+2026-04-11 19:37:47,687 - INFO -   unknown   :    57 (  0.6%)
+2026-04-11 19:37:47,689 - INFO - 
+Data Completeness: 99.91%
+2026-04-11 19:37:47,689 - INFO - ============================================================
+2026-04-11 19:37:47,689 - INFO - Classes: ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
+2026-04-11 19:37:47,689 - INFO - Class mapping: {'akiec': 0, 'bcc': 1, 'bkl': 2, 'df': 3, 'mel': 4, 'nv': 5, 'vasc': 6}
+2026-04-11 19:37:47,689 - INFO - Performing stratified split at lesion level...
+2026-04-11 19:37:47,701 - INFO - Unique lesions: 7470
+2026-04-11 19:37:47,705 - INFO - Samples per lesion: min=1, max=1
+2026-04-11 19:37:47,721 - INFO - 
+\u2713 Stratified split complete:
+2026-04-11 19:37:47,721 - INFO -   Train: 7054 images (5228 lesions)
+2026-04-11 19:37:47,721 - INFO -   Val:   1464 images (1121 lesions)
+2026-04-11 19:37:47,721 - INFO -   Test:  1497 images (1121 lesions)
+2026-04-11 19:37:47,723 - INFO - \u2713 No data leakage detected
+2026-04-11 19:37:47,723 - INFO - 
+Class distribution:
+2026-04-11 19:37:47,723 - INFO - 
+Train:
+2026-04-11 19:37:47,724 - INFO -   akiec     :   233 (  3.3%)
+2026-04-11 19:37:47,724 - INFO -   bcc       :   365 (  5.2%)
+2026-04-11 19:37:47,724 - INFO -   bkl       :   775 ( 11.0%)
+2026-04-11 19:37:47,724 - INFO -   df        :    76 (  1.1%)
+2026-04-11 19:37:47,724 - INFO -   mel       :   777 ( 11.0%)
+2026-04-11 19:37:47,724 - INFO -   nv        :  4730 ( 67.1%)
+2026-04-11 19:37:47,724 - INFO -   vasc      :    98 (  1.4%)
+2026-04-11 19:37:47,724 - INFO - 
+Val:
+2026-04-11 19:37:47,724 - INFO -   akiec     :    43 (  2.9%)
+2026-04-11 19:37:47,724 - INFO -   bcc       :    72 (  4.9%)
+2026-04-11 19:37:47,724 - INFO -   bkl       :   167 ( 11.4%)
+2026-04-11 19:37:47,724 - INFO -   df        :    17 (  1.2%)
+2026-04-11 19:37:47,724 - INFO -   mel       :   168 ( 11.5%)
+2026-04-11 19:37:47,724 - INFO -   nv        :   975 ( 66.6%)
+2026-04-11 19:37:47,724 - INFO -   vasc      :    22 (  1.5%)
+2026-04-11 19:37:47,725 - INFO - 
+Test:
+2026-04-11 19:37:47,725 - INFO -   akiec     :    51 (  3.4%)
+2026-04-11 19:37:47,725 - INFO -   bcc       :    77 (  5.1%)
+2026-04-11 19:37:47,725 - INFO -   bkl       :   157 ( 10.5%)
+2026-04-11 19:37:47,725 - INFO -   df        :    22 (  1.5%)
+2026-04-11 19:37:47,725 - INFO -   mel       :   168 ( 11.2%)
+2026-04-11 19:37:47,725 - INFO -   nv        :  1000 ( 66.8%)
+2026-04-11 19:37:47,725 - INFO -   vasc      :    22 (  1.5%)
+2026-04-11 19:37:47,726 - INFO - 
+Class weights (inverse frequency):
+2026-04-11 19:37:47,727 - INFO -   akiec     : 0.1293
+2026-04-11 19:37:47,727 - INFO -   bcc       : 0.0826
+2026-04-11 19:37:47,727 - INFO -   bkl       : 0.0389
+2026-04-11 19:37:47,727 - INFO -   df        : 0.3965
+2026-04-11 19:37:47,727 - INFO -   mel       : 0.0388
+2026-04-11 19:37:47,727 - INFO -   nv        : 0.0064
+2026-04-11 19:37:47,727 - INFO -   vasc      : 0.3075
+2026-04-11 19:37:47,736 - INFO - Class weights: tensor([0.1293, 0.0826, 0.0389, 0.3965, 0.0388, 0.0064, 0.3075])
+2026-04-11 19:37:47,736 - INFO - 
+======================================================================
+2026-04-11 19:37:47,736 - INFO - SKIPPING PHASE A GATE - PROCEEDING DIRECTLY TO PHASE B (FULL DATASET)
+2026-04-11 19:37:47,736 - INFO - ======================================================================
+
+2026-04-11 19:37:47,736 - INFO - ======================================================================
+2026-04-11 19:37:47,736 - INFO - PHASE B: FULL DATASET TRAINING (100% of data)
+2026-04-11 19:37:47,736 - INFO - ======================================================================
+2026-04-11 19:37:47,736 - INFO - Dataset: 7054 samples, augment=True
+2026-04-11 19:37:47,736 - INFO - Class mapping: {'akiec': 0, 'bcc': 1, 'bkl': 2, 'df': 3, 'mel': 4, 'nv': 5, 'vasc': 6}
+2026-04-11 19:37:47,736 - INFO - Dataset: 1464 samples, augment=False
+2026-04-11 19:37:47,736 - INFO - Class mapping: {'akiec': 0, 'bcc': 1, 'bkl': 2, 'df': 3, 'mel': 4, 'nv': 5, 'vasc': 6}
+2026-04-11 19:37:47,737 - INFO - Dataset: 1497 samples, augment=False
+2026-04-11 19:37:47,737 - INFO - Class mapping: {'akiec': 0, 'bcc': 1, 'bkl': 2, 'df': 3, 'mel': 4, 'nv': 5, 'vasc': 6}
+2026-04-11 19:37:48,946 - INFO - Trainer initialized on device: cuda
+2026-04-11 19:37:48,946 - INFO - Training components created successfully
+2026-04-11 19:37:48,946 - INFO - Target: 70.0% accuracy on validation set
+2026-04-11 19:37:48,946 - INFO - Epochs: 100 (early stop at 10 no-improvement)
+2026-04-11 19:37:48,946 - INFO - Dataset sizes: train=7054, val=1464, test=1497
+2026-04-11 19:37:48,946 - INFO - ======================================================================
+2026-04-11 19:37:48,946 - INFO - Starting training for 100 epochs
+2026-04-11 19:37:48,946 - INFO - ======================================================================
+2026-04-11 19:37:48,946 - INFO - 
+Epoch [1/100]
+2026-04-11 19:38:33,801 - INFO -   Batch 50/221, Loss: 2.0790
+2026-04-11 19:39:10,056 - INFO -   Batch 100/221, Loss: 1.7627
+2026-04-11 19:39:46,523 - INFO -   Batch 150/221, Loss: 1.9184
+2026-04-11 19:40:22,761 - INFO -   Batch 200/221, Loss: 1.7551
+2026-04-11 19:40:38,034 - INFO - Epoch avg training loss: 1.8512
+2026-04-11 19:40:52,399 - INFO - Validation - Loss: 1.3518, Accuracy: 58.47%
+2026-04-11 19:40:52,433 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 19:40:52,433 - INFO - \u2713 Best model saved (val_loss: 1.3518)
+2026-04-11 19:40:52,433 - INFO - 
+Epoch [2/100]
+2026-04-11 19:41:37,966 - INFO -   Batch 50/221, Loss: 2.0642
+2026-04-11 19:42:14,291 - INFO -   Batch 100/221, Loss: 1.8761
+2026-04-11 19:42:50,813 - INFO -   Batch 150/221, Loss: 1.6505
+2026-04-11 19:43:26,854 - INFO -   Batch 200/221, Loss: 1.7565
+2026-04-11 19:43:42,002 - INFO - Epoch avg training loss: 1.7851
+2026-04-11 19:43:56,522 - INFO - Validation - Loss: 1.4863, Accuracy: 14.62%
+2026-04-11 19:43:56,522 - INFO - No improvement. Early stop counter: 1/10
+2026-04-11 19:43:56,522 - INFO - 
+Epoch [3/100]
+2026-04-11 19:44:41,868 - INFO -   Batch 50/221, Loss: 3.1488
+2026-04-11 19:45:17,899 - INFO -   Batch 100/221, Loss: 1.6969
+2026-04-11 19:45:54,028 - INFO -   Batch 150/221, Loss: 1.7671
+2026-04-11 19:46:30,377 - INFO -   Batch 200/221, Loss: 1.5948
+2026-04-11 19:46:45,651 - INFO - Epoch avg training loss: 1.7391
+2026-04-11 19:47:00,429 - INFO - Validation - Loss: 1.5205, Accuracy: 49.86%
+2026-04-11 19:47:00,429 - INFO - No improvement. Early stop counter: 2/10
+2026-04-11 19:47:00,429 - INFO - 
+Epoch [4/100]
+2026-04-11 19:47:46,022 - INFO -   Batch 50/221, Loss: 1.5760
+2026-04-11 19:48:22,316 - INFO -   Batch 100/221, Loss: 1.6424
+2026-04-11 19:48:58,581 - INFO -   Batch 150/221, Loss: 1.4064
+2026-04-11 19:49:34,839 - INFO -   Batch 200/221, Loss: 1.5109
+2026-04-11 19:49:50,141 - INFO - Epoch avg training loss: 1.7267
+2026-04-11 19:50:04,957 - INFO - Validation - Loss: 1.6054, Accuracy: 48.57%
+2026-04-11 19:50:04,957 - INFO - No improvement. Early stop counter: 3/10
+2026-04-11 19:50:04,957 - INFO - 
+Epoch [5/100]
+2026-04-11 19:50:50,759 - INFO -   Batch 50/221, Loss: 1.7012
+2026-04-11 19:51:26,940 - INFO -   Batch 100/221, Loss: 2.6318
+2026-04-11 19:52:03,165 - INFO -   Batch 150/221, Loss: 1.5128
+2026-04-11 19:52:39,801 - INFO -   Batch 200/221, Loss: 1.6696
+2026-04-11 19:52:54,812 - INFO - Epoch avg training loss: 1.7007
+2026-04-11 19:53:08,697 - INFO - Validation - Loss: 1.2676, Accuracy: 56.76%
+2026-04-11 19:53:08,719 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 19:53:08,719 - INFO - \u2713 Best model saved (val_loss: 1.2676)
+2026-04-11 19:53:08,719 - INFO - 
+Epoch [6/100]
+2026-04-11 19:53:54,367 - INFO -   Batch 50/221, Loss: 1.3066
+2026-04-11 19:54:30,776 - INFO -   Batch 100/221, Loss: 1.6316
+2026-04-11 19:55:06,903 - INFO -   Batch 150/221, Loss: 1.6791
+2026-04-11 19:55:42,870 - INFO -   Batch 200/221, Loss: 1.7653
+2026-04-11 19:55:57,900 - INFO - Epoch avg training loss: 1.6526
+2026-04-11 19:56:11,609 - INFO - Validation - Loss: 1.2797, Accuracy: 50.34%
+2026-04-11 19:56:11,610 - INFO - No improvement. Early stop counter: 1/10
+2026-04-11 19:56:11,610 - INFO - 
+Epoch [7/100]
+2026-04-11 19:56:55,078 - INFO -   Batch 50/221, Loss: 1.3310
+2026-04-11 19:57:31,123 - INFO -   Batch 100/221, Loss: 1.7478
+2026-04-11 19:58:07,446 - INFO -   Batch 150/221, Loss: 1.5974
+2026-04-11 19:58:43,772 - INFO -   Batch 200/221, Loss: 1.5579
+2026-04-11 19:58:59,046 - INFO - Epoch avg training loss: 1.6165
+2026-04-11 19:59:13,099 - INFO - Validation - Loss: 1.3620, Accuracy: 50.14%
+2026-04-11 19:59:13,099 - INFO - No improvement. Early stop counter: 2/10
+2026-04-11 19:59:13,099 - INFO - 
+Epoch [8/100]
+2026-04-11 19:59:58,837 - INFO -   Batch 50/221, Loss: 1.2368
+2026-04-11 20:00:34,783 - INFO -   Batch 100/221, Loss: 1.4701
+2026-04-11 20:01:11,062 - INFO -   Batch 150/221, Loss: 1.1980
+2026-04-11 20:01:47,559 - INFO -   Batch 200/221, Loss: 1.9350
+2026-04-11 20:02:02,764 - INFO - Epoch avg training loss: 1.5845
+2026-04-11 20:02:16,554 - INFO - Validation - Loss: 1.2375, Accuracy: 49.80%
+2026-04-11 20:02:16,577 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:02:16,577 - INFO - \u2713 Best model saved (val_loss: 1.2375)
+2026-04-11 20:02:16,577 - INFO - 
+Epoch [9/100]
+2026-04-11 20:03:02,301 - INFO -   Batch 50/221, Loss: 1.7036
+2026-04-11 20:03:38,339 - INFO -   Batch 100/221, Loss: 1.2817
+2026-04-11 20:04:14,384 - INFO -   Batch 150/221, Loss: 1.2494
+2026-04-11 20:04:50,609 - INFO -   Batch 200/221, Loss: 1.9512
+2026-04-11 20:05:05,765 - INFO - Epoch avg training loss: 1.5377
+2026-04-11 20:05:19,705 - INFO - Validation - Loss: 1.1851, Accuracy: 51.64%
+2026-04-11 20:05:19,726 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:05:19,727 - INFO - \u2713 Best model saved (val_loss: 1.1851)
+2026-04-11 20:05:19,727 - INFO - 
+Epoch [10/100]
+2026-04-11 20:06:03,157 - INFO -   Batch 50/221, Loss: 1.6893
+2026-04-11 20:06:39,267 - INFO -   Batch 100/221, Loss: 1.5668
+2026-04-11 20:07:13,830 - INFO -   Batch 150/221, Loss: 1.4963
+2026-04-11 20:07:50,186 - INFO -   Batch 200/221, Loss: 1.0089
+2026-04-11 20:08:05,346 - INFO - Epoch avg training loss: 1.5168
+2026-04-11 20:08:19,019 - INFO - Validation - Loss: 1.1748, Accuracy: 50.68%
+2026-04-11 20:08:19,043 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:08:19,043 - INFO - \u2713 Best model saved (val_loss: 1.1748)
+2026-04-11 20:08:19,043 - INFO - 
+Epoch [11/100]
+2026-04-11 20:09:04,757 - INFO -   Batch 50/221, Loss: 2.3583
+2026-04-11 20:09:40,937 - INFO -   Batch 100/221, Loss: 1.7587
+2026-04-11 20:10:17,285 - INFO -   Batch 150/221, Loss: 1.1443
+2026-04-11 20:10:53,754 - INFO -   Batch 200/221, Loss: 1.5119
+2026-04-11 20:11:08,841 - INFO - Epoch avg training loss: 1.5059
+2026-04-11 20:11:22,751 - INFO - Validation - Loss: 1.1031, Accuracy: 54.10%
+2026-04-11 20:11:22,773 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:11:22,773 - INFO - \u2713 Best model saved (val_loss: 1.1031)
+2026-04-11 20:11:22,773 - INFO - 
+Epoch [12/100]
+2026-04-11 20:12:08,367 - INFO -   Batch 50/221, Loss: 1.2390
+2026-04-11 20:12:44,582 - INFO -   Batch 100/221, Loss: 1.3519
+2026-04-11 20:13:21,097 - INFO -   Batch 150/221, Loss: 1.3514
+2026-04-11 20:13:57,400 - INFO -   Batch 200/221, Loss: 0.9869
+2026-04-11 20:14:12,552 - INFO - Epoch avg training loss: 1.4927
+2026-04-11 20:14:27,248 - INFO - Validation - Loss: 1.1916, Accuracy: 50.68%
+2026-04-11 20:14:27,248 - INFO - No improvement. Early stop counter: 1/10
+2026-04-11 20:14:27,248 - INFO - 
+Epoch [13/100]
+2026-04-11 20:15:12,807 - INFO -   Batch 50/221, Loss: 0.9303
+2026-04-11 20:15:48,956 - INFO -   Batch 100/221, Loss: 1.3152
+2026-04-11 20:16:25,331 - INFO -   Batch 150/221, Loss: 1.6282
+2026-04-11 20:17:01,723 - INFO -   Batch 200/221, Loss: 0.7821
+2026-04-11 20:17:16,673 - INFO - Epoch avg training loss: 1.4831
+2026-04-11 20:17:30,481 - INFO - Validation - Loss: 1.2678, Accuracy: 51.37%
+2026-04-11 20:17:30,481 - INFO - No improvement. Early stop counter: 2/10
+2026-04-11 20:17:30,481 - INFO - 
+Epoch [14/100]
+2026-04-11 20:18:15,966 - INFO -   Batch 50/221, Loss: 1.0680
+2026-04-11 20:18:52,352 - INFO -   Batch 100/221, Loss: 1.4999
+2026-04-11 20:19:28,354 - INFO -   Batch 150/221, Loss: 1.4980
+2026-04-11 20:20:04,769 - INFO -   Batch 200/221, Loss: 1.3445
+2026-04-11 20:20:19,840 - INFO - Epoch avg training loss: 1.4775
+2026-04-11 20:20:33,776 - INFO - Validation - Loss: 1.2522, Accuracy: 47.34%
+2026-04-11 20:20:33,776 - INFO - No improvement. Early stop counter: 3/10
+2026-04-11 20:20:33,776 - INFO - 
+Epoch [15/100]
+2026-04-11 20:21:19,353 - INFO -   Batch 50/221, Loss: 1.3182
+2026-04-11 20:21:55,467 - INFO -   Batch 100/221, Loss: 0.8895
+2026-04-11 20:22:31,494 - INFO -   Batch 150/221, Loss: 1.5091
+2026-04-11 20:23:08,031 - INFO -   Batch 200/221, Loss: 1.7012
+2026-04-11 20:23:22,977 - INFO - Epoch avg training loss: 1.4226
+2026-04-11 20:23:36,619 - INFO - Validation - Loss: 1.0388, Accuracy: 53.14%
+2026-04-11 20:23:36,642 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:23:36,642 - INFO - \u2713 Best model saved (val_loss: 1.0388)
+2026-04-11 20:23:36,642 - INFO - 
+Epoch [16/100]
+2026-04-11 20:24:22,311 - INFO -   Batch 50/221, Loss: 1.2607
+2026-04-11 20:24:58,691 - INFO -   Batch 100/221, Loss: 1.0867
+2026-04-11 20:25:34,967 - INFO -   Batch 150/221, Loss: 1.6865
+2026-04-11 20:26:11,196 - INFO -   Batch 200/221, Loss: 1.5195
+2026-04-11 20:26:26,316 - INFO - Epoch avg training loss: 1.4429
+2026-04-11 20:26:40,119 - INFO - Validation - Loss: 1.2685, Accuracy: 50.00%
+2026-04-11 20:26:40,119 - INFO - No improvement. Early stop counter: 1/10
+2026-04-11 20:26:40,119 - INFO - 
+Epoch [17/100]
+2026-04-11 20:27:25,496 - INFO -   Batch 50/221, Loss: 1.3371
+2026-04-11 20:28:01,938 - INFO -   Batch 100/221, Loss: 1.2783
+2026-04-11 20:28:38,292 - INFO -   Batch 150/221, Loss: 0.7491
+2026-04-11 20:29:14,715 - INFO -   Batch 200/221, Loss: 1.5122
+2026-04-11 20:29:29,845 - INFO - Epoch avg training loss: 1.4502
+2026-04-11 20:29:43,632 - INFO - Validation - Loss: 1.0483, Accuracy: 54.03%
+2026-04-11 20:29:43,632 - INFO - No improvement. Early stop counter: 2/10
+2026-04-11 20:29:43,632 - INFO - 
+Epoch [18/100]
+2026-04-11 20:30:29,275 - INFO -   Batch 50/221, Loss: 1.2792
+2026-04-11 20:31:05,608 - INFO -   Batch 100/221, Loss: 2.3636
+2026-04-11 20:31:41,618 - INFO -   Batch 150/221, Loss: 0.8650
+2026-04-11 20:32:18,284 - INFO -   Batch 200/221, Loss: 1.6729
+2026-04-11 20:32:33,290 - INFO - Epoch avg training loss: 1.4569
+2026-04-11 20:32:47,138 - INFO - Validation - Loss: 1.0663, Accuracy: 54.10%
+2026-04-11 20:32:47,138 - INFO - No improvement. Early stop counter: 3/10
+2026-04-11 20:32:47,138 - INFO - 
+Epoch [19/100]
+2026-04-11 20:33:32,422 - INFO -   Batch 50/221, Loss: 0.7815
+2026-04-11 20:34:08,645 - INFO -   Batch 100/221, Loss: 1.7426
+2026-04-11 20:34:44,881 - INFO -   Batch 150/221, Loss: 1.3544
+2026-04-11 20:35:21,056 - INFO -   Batch 200/221, Loss: 1.3130
+2026-04-11 20:35:35,923 - INFO - Epoch avg training loss: 1.4081
+2026-04-11 20:35:49,886 - INFO - Validation - Loss: 1.1038, Accuracy: 52.80%
+2026-04-11 20:35:49,886 - INFO - No improvement. Early stop counter: 4/10
+2026-04-11 20:35:49,886 - INFO - 
+Epoch [20/100]
+2026-04-11 20:36:35,109 - INFO -   Batch 50/221, Loss: 1.3611
+2026-04-11 20:37:11,345 - INFO -   Batch 100/221, Loss: 1.2041
+2026-04-11 20:37:47,869 - INFO -   Batch 150/221, Loss: 1.2154
+2026-04-11 20:38:24,114 - INFO -   Batch 200/221, Loss: 1.1556
+2026-04-11 20:38:39,817 - INFO - Epoch avg training loss: 1.4334
+2026-04-11 20:38:53,603 - INFO - Validation - Loss: 1.1352, Accuracy: 52.46%
+2026-04-11 20:38:53,603 - INFO - No improvement. Early stop counter: 5/10
+2026-04-11 20:38:53,603 - INFO - 
+Epoch [21/100]
+2026-04-11 20:39:39,259 - INFO -   Batch 50/221, Loss: 1.1431
+2026-04-11 20:40:13,378 - INFO -   Batch 100/221, Loss: 1.1260
+2026-04-11 20:40:49,560 - INFO -   Batch 150/221, Loss: 1.3231
+2026-04-11 20:41:25,851 - INFO -   Batch 200/221, Loss: 1.7323
+2026-04-11 20:41:40,911 - INFO - Epoch avg training loss: 1.4199
+2026-04-11 20:41:54,786 - INFO - Validation - Loss: 1.1847, Accuracy: 52.46%
+2026-04-11 20:41:54,787 - INFO - No improvement. Early stop counter: 6/10
+2026-04-11 20:41:54,787 - INFO - 
+Epoch [22/100]
+2026-04-11 20:42:40,544 - INFO -   Batch 50/221, Loss: 1.5850
+2026-04-11 20:43:16,788 - INFO -   Batch 100/221, Loss: 1.3934
+2026-04-11 20:43:52,963 - INFO -   Batch 150/221, Loss: 1.2589
+2026-04-11 20:44:29,259 - INFO -   Batch 200/221, Loss: 1.5769
+2026-04-11 20:44:44,372 - INFO - Epoch avg training loss: 1.3765
+2026-04-11 20:44:58,134 - INFO - Validation - Loss: 1.1068, Accuracy: 50.82%
+2026-04-11 20:44:58,134 - INFO - No improvement. Early stop counter: 7/10
+2026-04-11 20:44:58,134 - INFO - 
+Epoch [23/100]
+2026-04-11 20:45:43,653 - INFO -   Batch 50/221, Loss: 1.2500
+2026-04-11 20:46:19,154 - INFO -   Batch 100/221, Loss: 1.3369
+2026-04-11 20:46:55,750 - INFO -   Batch 150/221, Loss: 2.3084
+2026-04-11 20:47:31,917 - INFO -   Batch 200/221, Loss: 0.9958
+2026-04-11 20:47:46,160 - INFO - Epoch avg training loss: 1.3695
+2026-04-11 20:48:00,116 - INFO - Validation - Loss: 1.1393, Accuracy: 49.39%
+2026-04-11 20:48:00,116 - INFO - No improvement. Early stop counter: 8/10
+2026-04-11 20:48:00,116 - INFO - 
+Epoch [24/100]
+2026-04-11 20:48:45,630 - INFO -   Batch 50/221, Loss: 3.0646
+2026-04-11 20:49:21,884 - INFO -   Batch 100/221, Loss: 2.6579
+2026-04-11 20:49:58,306 - INFO -   Batch 150/221, Loss: 1.8621
+2026-04-11 20:50:34,560 - INFO -   Batch 200/221, Loss: 1.5203
+2026-04-11 20:50:49,606 - INFO - Epoch avg training loss: 1.3859
+2026-04-11 20:51:03,981 - INFO - Validation - Loss: 0.9958, Accuracy: 57.17%
+2026-04-11 20:51:04,005 - INFO - Checkpoint saved: checkpoints\best_model.pt
+2026-04-11 20:51:04,005 - INFO - \u2713 Best model saved (val_loss: 0.9958)
+2026-04-11 20:51:04,005 - INFO - 
+Epoch [25/100]
+2026-04-11 20:51:49,689 - INFO -   Batch 50/221, Loss: 1.5058
+2026-04-11 20:52:25,745 - INFO -   Batch 100/221, Loss: 1.4161
+2026-04-11 20:53:01,923 - INFO -   Batch 150/221, Loss: 1.0015
+2026-04-11 20:53:37,644 - INFO -   Batch 200/221, Loss: 1.0700
+2026-04-11 20:53:52,538 - INFO - Epoch avg training loss: 1.3960
+2026-04-11 20:54:06,335 - INFO - Validation - Loss: 1.0958, Accuracy: 53.89%
+2026-04-11 20:54:06,335 - INFO - No improvement. Early stop counter: 1/10
+2026-04-11 20:54:06,335 - INFO - 
+Epoch [26/100]
+2026-04-11 20:54:51,850 - INFO -   Batch 50/221, Loss: 1.0088
+2026-04-11 20:55:27,580 - INFO -   Batch 100/221, Loss: 0.6973
+2026-04-11 20:56:03,514 - INFO -   Batch 150/221, Loss: 1.3121
+2026-04-11 20:56:39,406 - INFO -   Batch 200/221, Loss: 1.8737
+2026-04-11 20:56:54,259 - INFO - Epoch avg training loss: 1.3228
+2026-04-11 20:57:07,946 - INFO - Validation - Loss: 1.1357, Accuracy: 51.84%
+2026-04-11 20:57:07,946 - INFO - No improvement. Early stop counter: 2/10
+2026-04-11 20:57:07,946 - INFO - 
+Epoch [27/100]
+2026-04-11 20:57:53,249 - INFO -   Batch 50/221, Loss: 1.2220
+2026-04-11 20:58:29,264 - INFO -   Batch 100/221, Loss: 1.5000
+2026-04-11 20:59:05,005 - INFO -   Batch 150/221, Loss: 1.4274
+2026-04-11 20:59:40,798 - INFO -   Batch 200/221, Loss: 1.2051
+2026-04-11 20:59:55,995 - INFO - Epoch avg training loss: 1.3765
+2026-04-11 21:00:09,721 - INFO - Validation - Loss: 1.0966, Accuracy: 53.14%
+2026-04-11 21:00:09,721 - INFO - No improvement. Early stop counter: 3/10
+2026-04-11 21:00:09,721 - INFO - 
+Epoch [28/100]
+2026-04-11 21:00:55,001 - INFO -   Batch 50/221, Loss: 1.1366
+2026-04-11 21:01:30,945 - INFO -   Batch 100/221, Loss: 0.5270
+2026-04-11 21:02:06,898 - INFO -   Batch 150/221, Loss: 1.6224
+2026-04-11 21:02:43,334 - INFO -   Batch 200/221, Loss: 0.7962
+2026-04-11 21:02:58,229 - INFO - Epoch avg training loss: 1.3799
+2026-04-11 21:03:12,052 - INFO - Validation - Loss: 1.0462, Accuracy: 53.96%
+2026-04-11 21:03:12,053 - INFO - No improvement. Early stop counter: 4/10
+2026-04-11 21:03:12,053 - INFO - 
+Epoch [29/100]
+2026-04-11 21:03:57,430 - INFO -   Batch 50/221, Loss: 1.5074
+2026-04-11 21:04:33,410 - INFO -   Batch 100/221, Loss: 1.1410
+2026-04-11 21:05:09,941 - INFO -   Batch 150/221, Loss: 1.3386
+2026-04-11 21:05:46,062 - INFO -   Batch 200/221, Loss: 1.4934
+2026-04-11 21:06:01,543 - INFO - Epoch avg training loss: 1.3552
+2026-04-11 21:06:15,238 - INFO - Validation - Loss: 0.9979, Accuracy: 55.19%
+2026-04-11 21:06:15,238 - INFO - No improvement. Early stop counter: 5/10
+2026-04-11 21:06:15,238 - INFO - 
+Epoch [30/100]
+2026-04-11 21:07:00,755 - INFO -   Batch 50/221, Loss: 1.6941
+2026-04-11 21:07:36,554 - INFO -   Batch 100/221, Loss: 1.1546
+2026-04-11 21:08:12,663 - INFO -   Batch 150/221, Loss: 1.1569
+2026-04-11 21:08:48,344 - INFO -   Batch 200/221, Loss: 1.1828
+2026-04-11 21:09:03,183 - INFO - Epoch avg training loss: 1.3120
+2026-04-11 21:09:16,761 - INFO - Validation - Loss: 1.0110, Accuracy: 54.51%
+2026-04-11 21:09:16,761 - INFO - No improvement. Early stop counter: 6/10
+2026-04-11 21:09:16,761 - INFO - 
+Epoch [31/100]
+2026-04-11 21:10:02,219 - INFO -   Batch 50/221, Loss: 1.3951
+2026-04-11 21:10:36,337 - INFO -   Batch 100/221, Loss: 1.7565
+2026-04-11 21:11:12,201 - INFO -   Batch 150/221, Loss: 1.2337
+2026-04-11 21:11:46,147 - INFO -   Batch 200/221, Loss: 1.3421
+2026-04-11 21:12:01,084 - INFO - Epoch avg training loss: 1.2820
+2026-04-11 21:12:14,935 - INFO - Validation - Loss: 1.0749, Accuracy: 52.05%
+2026-04-11 21:12:14,935 - INFO - No improvement. Early stop counter: 7/10
+2026-04-11 21:12:14,935 - INFO - 
+Epoch [32/100]
+2026-04-11 21:13:00,234 - INFO -   Batch 50/221, Loss: 1.0604
+2026-04-11 21:13:36,496 - INFO -   Batch 100/221, Loss: 0.7729
+2026-04-11 21:14:12,818 - INFO -   Batch 150/221, Loss: 1.1242
+2026-04-11 21:14:48,968 - INFO -   Batch 200/221, Loss: 1.1275
+2026-04-11 21:15:03,880 - INFO - Epoch avg training loss: 1.3025
+2026-04-11 21:15:17,872 - INFO - Validation - Loss: 1.0424, Accuracy: 53.55%
+2026-04-11 21:15:17,873 - INFO - No improvement. Early stop counter: 8/10
+2026-04-11 21:15:17,873 - INFO - 
+Epoch [33/100]
+2026-04-11 21:16:03,376 - INFO -   Batch 50/221, Loss: 1.4894
+2026-04-11 21:16:39,265 - INFO -   Batch 100/221, Loss: 1.6220
+2026-04-11 21:17:15,447 - INFO -   Batch 150/221, Loss: 0.6156
+2026-04-11 21:17:51,839 - INFO -   Batch 200/221, Loss: 1.2626
+2026-04-11 21:18:06,980 - INFO - Epoch avg training loss: 1.2723
+2026-04-11 21:18:20,662 - INFO - Validation - Loss: 1.0384, Accuracy: 53.21%
+2026-04-11 21:18:20,662 - INFO - No improvement. Early stop counter: 9/10
+2026-04-11 21:18:20,662 - INFO - 
+Epoch [34/100]
+2026-04-11 21:19:06,251 - INFO -   Batch 50/221, Loss: 1.1024
+2026-04-11 21:19:42,095 - INFO -   Batch 100/221, Loss: 1.0030
+2026-04-11 21:20:18,032 - INFO -   Batch 150/221, Loss: 1.2010
+2026-04-11 21:20:53,842 - INFO -   Batch 200/221, Loss: 1.0469
+2026-04-11 21:21:08,771 - INFO - Epoch avg training loss: 1.2968
+2026-04-11 21:21:22,385 - INFO - Validation - Loss: 1.0426, Accuracy: 53.01%
+2026-04-11 21:21:22,385 - INFO - No improvement. Early stop counter: 10/10
+2026-04-11 21:21:22,385 - INFO - Early stopping triggered at epoch 34
+2026-04-11 21:21:22,385 - INFO - 
+======================================================================
+2026-04-11 21:21:22,385 - INFO - Training completed in 1:43:33.438494
+2026-04-11 21:21:22,385 - INFO - Best validation loss: 0.9958
+2026-04-11 21:21:22,385 - INFO - ======================================================================
+2026-04-11 21:21:22,387 - INFO - 
+======================================================================
+2026-04-11 21:21:22,388 - INFO - EVALUATION ON TEST SET
+2026-04-11 21:21:22,388 - INFO - ======================================================================
+2026-04-11 21:21:36,289 - INFO - ======================================================================
+2026-04-11 21:21:36,289 - INFO - EVALUATION METRICS
+2026-04-11 21:21:36,289 - INFO - ======================================================================
+2026-04-11 21:21:36,289 - INFO - 
+Overall Accuracy: 0.5170
+2026-04-11 21:21:36,289 - INFO - 
+Weighted Metrics:
+2026-04-11 21:21:36,289 - INFO -   Precision: 0.7422
+2026-04-11 21:21:36,289 - INFO -   Recall:    0.5170
+2026-04-11 21:21:36,289 - INFO -   F1 Score:  0.5659
+2026-04-11 21:21:36,289 - INFO - 
+Macro Metrics:
+2026-04-11 21:21:36,289 - INFO -   Precision: 0.3670
+2026-04-11 21:21:36,289 - INFO -   Recall:    0.4759
+2026-04-11 21:21:36,289 - INFO -   F1 Score:  0.3723
+2026-04-11 21:21:36,289 - INFO - 
+Per-Class Metrics:
+2026-04-11 21:21:36,289 - INFO - Class      Precision    Recall       F1          
+2026-04-11 21:21:36,289 - INFO - ----------------------------------------------
+2026-04-11 21:21:36,289 - INFO - akiec      0.1838       0.6667       0.2881      
+2026-04-11 21:21:36,289 - INFO - bcc        0.2564       0.3896       0.3093      
+2026-04-11 21:21:36,289 - INFO - bkl        0.3636       0.3312       0.3467      
+2026-04-11 21:21:36,289 - INFO - df         0.0952       0.0909       0.0930      
+2026-04-11 21:21:36,289 - INFO - mel        0.2682       0.7440       0.3943      
+2026-04-11 21:21:36,289 - INFO - nv         0.9682       0.5180       0.6749      
+2026-04-11 21:21:36,289 - INFO - vasc       0.4333       0.5909       0.5000      
+2026-04-11 21:21:36,290 - INFO - ======================================================================
+2026-04-11 21:21:36,290 - INFO - ======================================================================
+2026-04-11 21:21:36,290 - INFO - PHASE B FINAL RESULTS
+2026-04-11 21:21:36,290 - INFO - ======================================================================
+2026-04-11 21:21:36,290 - INFO - Test accuracy: 51.70%
+2026-04-11 21:21:36,290 - INFO - Test weighted F1: 0.5659
+2026-04-11 21:21:36,290 - INFO - Training time: 103.6 minutes
+2026-04-11 21:21:36,290 - INFO - Target (70.0%): \u274c FAILED
+2026-04-11 21:21:36,290 - INFO - ======================================================================
+2026-04-11 21:21:36,291 - INFO - ModelManager initialized
+2026-04-11 21:21:36,291 - INFO -   Models dir: C:\Users\aditj\New Projects\Skin-Cancer-Disease-Prediction-System\models
+2026-04-11 21:21:36,291 - INFO -   Results dir: C:\Users\aditj\New Projects\Skin-Cancer-Disease-Prediction-System\results
+2026-04-11 21:21:36,301 - INFO - \u2713 Model saved: models\best_model.pt
+2026-04-11 21:21:36,607 - INFO - \u2713 Metadata saved: models\best_model_metadata.json
+2026-04-11 21:21:36,608 - INFO - \u2713 Results saved: results\phase_b_results.json
+2026-04-11 21:21:36,609 - INFO - Results saved: results\phase4_results.json
+
+======================================================================
+PHASE 4: BASELINE CNN TRAINING
+======================================================================
+Start time: 2026-04-11 19:37:46
+
+======================================================================
+Traceback (most recent call last):
+  File "C:\Users\aditj\New Projects\Skin-Cancer-Disease-Prediction-System\train_phase4.py", line 350, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\aditj\New Projects\Skin-Cancer-Disease-Prediction-System\train_phase4.py", line 343, in main
+    print("\u2705 PHASE 4 COMPLETE")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
