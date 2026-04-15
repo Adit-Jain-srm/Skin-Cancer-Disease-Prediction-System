@@ -6,3 +6,32 @@ Dataset/hmnist_28_28_RGB.csv
 Dataset/hmnist_28_28_L.csv
 Dataset/hmnist_8_8_RGB.csv
 Dataset/hmnist_8_8_L.csv
+Dataset/
+
+# Python and environment
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Runtime and temp files
+temp_*.jpg
+temp_*.png
+test_results.txt
+*.log
+training_phase4_full.log
+
+# Data and model directories
+checkpoints/
+models/
+results/
+tasks/
+
+# OS
+.DS_Store
+*.swp
+*.swo
