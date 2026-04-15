@@ -1,9 +1,0 @@
-[browser]
-gatherUsageStats = false
-serverAddress = "localhost"
-
-[logger]
-level = "info"
-
-[client]
-showErrorDetails = true
