@@ -1,0 +1,62 @@
+version: '3.9'
+
+services:
+  # Main Flask API service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: skin-cancer-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=deploy_api.py
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./checkpoints:/app/checkpoints:ro
+      - ./logs:/app/logs
+      - ./models:/app/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+    networks:
+      - skin-cancer-network
+    labels:
+      - "com.example.description=Skin Cancer Detection API"
+      - "com.example.phase=production"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Prometheus metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: skin-cancer-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - skin-cancer-network
+    restart: unless-stopped
+    depends_on:
+      - api
+
+networks:
+  skin-cancer-network:
+    driver: bridge
+
+volumes:
+  prometheus-data:
+    driver: local
