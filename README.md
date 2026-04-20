@@ -1,5 +1,7 @@
 # Skin Cancer Disease Prediction System
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Adit-Jain-srm/Skin-Cancer-Disease-Prediction-System)
+
 A research-oriented **skin lesion classification** pipeline built with PyTorch. The system preprocesses dermoscopic or clinical lesion images, runs a trained **ResNet50** (transfer learning) classifier on the **HAM10000** label set, and exposes both a **command-line interface** and an **integrated web application** (Flask API + modern React frontend).
 
 The project is suitable as a **software engineering or machine learning capstone** and as a baseline for experimentation with data augmentation, metrics, and deployment patterns.
