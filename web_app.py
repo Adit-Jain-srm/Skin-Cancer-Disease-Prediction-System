@@ -6,13 +6,11 @@ Usage:
     python web_app.py --model-path checkpoints/best_model.pt --port 5000
 """
 
-import flask
-from flask import Flask, send_file, request, jsonify
+from flask import Flask, send_file, send_from_directory, request, jsonify
 from flask_cors import CORS
 import logging
 import argparse
 from pathlib import Path
-from typing import Dict
 import io
 from PIL import Image
 import numpy as np
@@ -31,6 +29,10 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+ROOT_DIR = Path(__file__).resolve().parent
+FRONTEND_DIST = ROOT_DIR / "frontend" / "dist"
+LEGACY_FRONTEND = ROOT_DIR / "frontend.html"
 
 # GPU detection and logging
 def log_gpu_info():
@@ -73,12 +75,37 @@ class SkinCancerWebApp:
     def _register_routes(self):
         """Register all routes."""
         
-        # Serve frontend
+        # Serve frontend (Vite build if present, else legacy single-file HTML)
         @self.app.route('/')
         def index():
             """Serve main frontend."""
-            with open('frontend.html', 'r', encoding='utf-8') as f:
-                return f.read()
+            built = FRONTEND_DIST / "index.html"
+            if built.is_file():
+                return send_file(built, mimetype='text/html; charset=utf-8')
+            if LEGACY_FRONTEND.is_file():
+                return send_file(LEGACY_FRONTEND, mimetype='text/html; charset=utf-8')
+            return jsonify({'error': 'No frontend build or frontend.html'}), 503
+
+        @self.app.route('/favicon.ico')
+        def favicon():
+            """Avoid 404 noise; serve icon from build output if present."""
+            p = FRONTEND_DIST / 'favicon.ico'
+            if p.is_file():
+                return send_file(p)
+            return ('', 204)
+
+        @self.app.route('/sw.js')
+        def service_worker_absent():
+            """Browsers / extensions probe for a service worker; no 500, no HTML fallback."""
+            return ('', 204)
+
+        @self.app.route('/assets/<path:path>')
+        def vite_assets(path):
+            """Vite-bundled scripts and styles."""
+            assets_dir = FRONTEND_DIST / 'assets'
+            if not assets_dir.is_dir():
+                return jsonify({'error': 'Not found'}), 404
+            return send_from_directory(assets_dir, path)
         
         # API: Health check
         @self.app.route('/api/health', methods=['GET'])
@@ -218,13 +245,38 @@ class SkinCancerWebApp:
             except Exception as e:
                 logger.error(f"Error during batch prediction: {e}")
                 return jsonify({'error': str(e), 'success': False}), 500
+
+        @self.app.route('/<path:path>')
+        def dist_public(path):
+            """Other static files from the Vite build (e.g. favicon.svg). Registered last so /api/* wins."""
+            if path.startswith('api') or path.startswith('assets'):
+                return jsonify({'error': 'Not found'}), 404
+            base = FRONTEND_DIST.resolve()
+            candidate = (FRONTEND_DIST / path).resolve()
+            try:
+                candidate.relative_to(base)
+            except ValueError:
+                return jsonify({'error': 'Not found'}), 404
+            if candidate.is_file():
+                return send_file(candidate)
+            return jsonify({'error': 'Not found'}), 404
         
-        # Catch-all for single page app
         @self.app.errorhandler(404)
         def not_found(e):
-            if not request.path.startswith('/api'):
-                with open('frontend.html', 'r') as f:
-                    return f.read()
+            if request.path.startswith('/api'):
+                return jsonify({'error': 'Not found'}), 404
+            suffix = Path(request.path).suffix.lower()
+            static_exts = {
+                '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp',
+                '.js', '.css', '.map', '.woff', '.woff2', '.ttf', '.eot',
+            }
+            if suffix in static_exts:
+                return '', 404
+            built = FRONTEND_DIST / 'index.html'
+            if built.is_file():
+                return send_file(built, mimetype='text/html; charset=utf-8')
+            if LEGACY_FRONTEND.is_file():
+                return send_file(LEGACY_FRONTEND, mimetype='text/html; charset=utf-8')
             return jsonify({'error': 'Not found'}), 404
         
         @self.app.errorhandler(500)
