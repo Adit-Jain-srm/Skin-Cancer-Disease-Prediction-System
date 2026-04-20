@@ -1,196 +1,152 @@
-## Skin Cancer Disease Prediction System
+# Skin Cancer Disease Prediction System
 
-An AI-based application that assists in **early detection and classification of skin cancer** from dermoscopic or skin-lesion images using **Convolutional Neural Networks (CNNs)** and classic image preprocessing techniques.
+A research-oriented **skin lesion classification** pipeline built with PyTorch. The system preprocesses dermoscopic or clinical lesion images, runs a trained **ResNet50** (transfer learning) classifier on the **HAM10000** label set, and exposes both a **command-line interface** and an **integrated web application** (Flask API + modern React frontend).
 
-This project is developed as an **SEPM (Software Engineering Project Management) / academic project**.
+The project is suitable as a **software engineering or machine learning capstone** and as a baseline for experimentation with data augmentation, metrics, and deployment patterns.
 
----
-
-## 1. Problem Statement
-
-Skin diseases are among the most common health concerns worldwide and require **prompt and accurate diagnosis**. Conventional diagnosis depends heavily on dermatologist expertise and is affected by:
-
-- Low contrast between lesions and surrounding skin  
-- Visual similarity between healthy and diseased regions  
-- Limited availability of specialists in remote areas  
-
-This project aims to provide an **automated, computer-aided diagnostic system** that:
-
-- Preprocesses skin images (noise reduction, grayscale conversion, enhancement)  
-- Extracts important visual features  
-- Uses a **CNN model** to classify the skin lesion type  
-- Supports clinicians with consistent, reliable prediction results and confidence scores  
-
-> **Note:** The system is intended as a **decision-support tool**, not a replacement for professional medical diagnosis.
+> **Medical disclaimer:** This software is for **education and decision-support research only**. It is not a medical device, is not FDA-cleared or CE-marked, and must **not** replace examination by a qualified clinician.
 
 ---
 
-## 2. Objectives
+## Capabilities
 
-- **Early detection** of skin cancer from lesion images  
-- **Automated preprocessing**: resizing, normalization, denoising, augmentation  
-- **CNN-based classification** of skin disease categories (e.g., benign vs malignant / multiple classes)  
-- **User-friendly interface** for image upload and prediction  
-- Provide **performance metrics** (accuracy, precision, recall) for evaluation  
-
----
-
-## 3. System Overview
-
-### 3.1 High-Level Workflow
-
-1. **Image Upload** (user selects or captures a lesion image)  
-2. **Image Preprocessing**  
-   - Resize to `224×224`  
-   - Normalize pixel values to \([0, 1]\)  
-   - Denoise and enhance contrast  
-   - Data augmentation during training  
-3. **Feature Extraction & CNN Classification**  
-4. **Prediction & Result Display**  
-   - Predicted class (e.g., melanoma / nevus / benign)  
-   - Confidence score  
-5. **(Optional)** Store or log prediction for offline analysis (if enabled)
-
-### 3.2 Core Modules
-
-- **Dataset Manager**
-  - Reads and validates labelled datasets (e.g., HAM10000)
-  - Manages train/validation/test splits
-- **Image Preprocessing Module**
-  - Resizing, normalization, noise removal, augmentation
-- **CNN Model Module**
-  - Defines CNN or transfer-learning architecture
-  - Training, validation, evaluation
-- **Prediction & Result Module**
-  - Loads saved model
-  - Performs inference on new images
-  - Computes confidence scores
-- **User Interface**
-  - CLI or web UI (e.g., Flask) for image upload and result viewing
+| Area | Description |
+|------|-------------|
+| **Classification** | Seven HAM10000 classes (e.g., melanoma, melanocytic nevus, BCC, AK, benign keratosis, dermatofibroma, vascular lesion). |
+| **Inference** | Single-image prediction with per-class probabilities and confidence. |
+| **Training** | Transfer learning, augmentation (Albumentations), and configurable training scripts under `scripts/`. |
+| **Web UI** | Image upload, live results, session history, and GPU/CPU device indicator when served via `web_app.py`. |
+| **API** | JSON endpoints for health, config, and prediction (`deploy_api.py` for API-only deployments). |
 
 ---
 
-## 4. Features
+## Architecture
 
-- **Upload skin lesion images**
-- **Automatic preprocessing** (resize, normalize, denoise, augment)
-- **Trainable CNN model**
-- **Prediction with confidence score**
-- **Evaluation metrics**: accuracy, precision, recall
-- **Extensible architecture** to plug in advanced models (ResNet, EfficientNet, etc.)
+- **Core library (`src/`)** — Data loading, preprocessing, ResNet50 wiring, training loops, metrics, and `InferenceEngine` for production-style loading of checkpoints.
+- **Training & evaluation (`scripts/`)** — End-to-end training, evaluation, and prediction entry points.
+- **Web stack** — `web_app.py` serves the UI and implements `/api/*` routes. The UI is a **Vite + React + TypeScript** app in `frontend/` (Framer Motion, accessible motion defaults). After `npm run build`, Flask serves `frontend/dist/`; if no build is present, it falls back to `frontend.html`.
 
----
-
-## 5. Requirements
-
-### 5.1 Software / Tools
-
-- **OS**: Windows 11 (64-bit) or compatible
-- **Language**: Python 3.13+
-- **Core Libraries**:
-  - `torch` 2.6.0 (with CUDA 12.4 support)
-  - `torchvision` 0.21.0
-  - `torchaudio` 2.6.0
-  - `opencv-python`
-  - `numpy`
-  - `scikit-learn`
-  - `matplotlib` / `seaborn` (for plots)
-  - `flask` (web UI)
-  - `albumentations` (image augmentation)
-- **Environment**: `venv` (recommended)
-- **GPU Support**: NVIDIA CUDA 12.4 (recommended for training speedup)
-
-### 5.2 Hardware
-
-- **Minimum**: 8GB RAM, multi-core CPU
-- **Recommended**: 16GB+ RAM, NVIDIA GPU (RTX 3050 Ti or better) with 4GB+ VRAM
-- **Storage**: 5GB+ for dataset and models
-
----
-
-## 6. Installation & Setup
-
-### 6.1 Prerequisites
-
-Ensure Python 3.13+ is installed:
-```bash
-python --version
+```text
+Browser  →  Flask (web_app.py)  →  InferenceEngine  →  checkpoint (.pt)
+                 ↓
+            /api/config, /api/predict, …
 ```
 
-### 6.2 Clone & Navigate
+---
+
+## Requirements
+
+- **Python** 3.13+
+- **PyTorch** 2.6 / **torchvision** 0.21 (CUDA 12.4 wheels recommended on NVIDIA hardware)
+- **Node.js** 20+ (only for building the React frontend)
+- **Hardware** — CPU-only is supported; **GPU strongly recommended** for training and faster inference (typical laptop dGPU with 4GB+ VRAM is sufficient for inference).
+
+Full Python dependencies are listed in `requirements.txt`.
+
+---
+
+## Installation
+
+### 1. Clone and enter the repository
 
 ```bash
 git clone <repository-url>
 cd Skin-Cancer-Disease-Prediction-System
 ```
 
-### 6.3 Create Virtual Environment
+### 2. Create and activate a virtual environment
+
+**Windows (PowerShell):**
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux:**
 
 ```bash
 python -m venv .venv
-```
-
-**Activate on Windows:**
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-**Activate on macOS/Linux:**
-```bash
 source .venv/bin/activate
 ```
 
-### 6.4 Install Dependencies with GPU Support
+### 3. Install PyTorch, then the rest of the stack
 
-**For NVIDIA GPU (CUDA 12.4) - Recommended:**
+**NVIDIA GPU (CUDA 12.4):**
+
 ```bash
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 pip install -r requirements.txt
 ```
 
-**For CPU-only (slower training):**
+**CPU only:**
+
 ```bash
 pip install torch torchvision torchaudio
 pip install -r requirements.txt
 ```
 
-### 6.5 Verify GPU Setup
+### 4. Verify GPU (optional)
 
 ```bash
-python check_gpu.py
-```
-
-Expected output when GPU is available:
-```
-✓ CUDA Available: True
-✓ GPU Count: 1
-  GPU 0: NVIDIA GeForce RTX 3050 Ti Laptop GPU
-  Memory: 4.00 GB
+python scripts/check_gpu.py
 ```
 
 ---
 
-## 7. Usage
+## Usage
 
-### 7.1 Training the Model
+### Train a model
 
-**Use the virtual environment Python:**
-```bash
-.venv\Scripts\python train_phase4.py
-```
-
-Or if venv is activated:
-```bash
-python train_phase4.py
-```
-
-### 7.2 Making Predictions
+From the repository root (with the virtual environment activated):
 
 ```bash
-python predict.py --image_path path/to/image.jpg
+python scripts/train_phase4.py
 ```
 
-### 7.3 Running Tests
+Other training and evaluation scripts live under `scripts/` (e.g., transfer learning, abbreviated runs, hyperparameter tuning).
+
+### Run CLI prediction
+
+```bash
+python scripts/predict.py --image_path path/to/image.jpg
+```
+
+Adjust arguments per the script’s `--help` output.
+
+### Run the integrated web application
+
+1. **Build the frontend** (once, or after UI changes):
+
+   ```bash
+   cd frontend
+   npm install
+   npm run build
+   cd ..
+   ```
+
+2. **Start the server** (requires a trained checkpoint):
+
+   ```bash
+   python web_app.py --model-path checkpoints/best_model.pt --port 5000
+   ```
+
+3. Open **http://localhost:5000** in a browser.
+
+**Local development** (hot reload for UI): run Flask as above, then in another terminal:
+
+```bash
+cd frontend
+npm run dev
+```
+
+The Vite dev server proxies `/api` to `http://127.0.0.1:5000` by default.
+
+### API-only deployment
+
+For deployments that expose only the REST API, use `deploy_api.py` (see `DEPLOYMENT_QUICKSTART.md` for operational detail).
+
+### Tests
 
 ```bash
 pytest tests/ -v
@@ -198,72 +154,60 @@ pytest tests/ -v
 
 ---
 
-## 8. Project Structure
+## Project structure
 
-```
+```text
 Skin-Cancer-Disease-Prediction-System/
-├── src/                          # Core modules
-│   ├── model.py                  # CNN architecture
-│   ├── trainer.py                # Training loop
-│   ├── data_loader.py            # Dataset loading (with GPU support)
-│   ├── metrics.py                # Evaluation metrics
-│   └── utils.py                  # Helper functions
-├── checkpoints/                  # Saved model checkpoints
-├── Dataset/                      # Training data (HAM10000)
-├── train_phase4.py               # Main training script
-├── predict.py                    # Inference script
-├── check_gpu.py                  # GPU verification
-├── requirements.txt              # Python dependencies
-└── README.md                     # This file
+├── src/                    # Core ML code (models, data, training, inference)
+├── scripts/                # Training, prediction, evaluation, utilities
+├── tests/                  # Pytest suite
+├── frontend/               # Vite + React + TypeScript UI
+├── checkpoints/            # Saved model weights (.pt)
+├── web_app.py              # Flask app: API + static UI
+├── deploy_api.py           # API-focused Flask entrypoint
+├── frontend.html           # Legacy single-page fallback (no Node build)
+├── requirements.txt
+├── DEPLOYMENT_QUICKSTART.md
+└── README.md
 ```
 
 ---
 
-## 9. GPU Troubleshooting
+## Troubleshooting
 
-### Issue: "pin_memory argument is set as true but no accelerator is found"
+### `pin_memory` warning without GPU
 
-**Solution:** This is a warning that pin_memory=True is set without GPU. The code now automatically detects GPU availability and sets pin_memory only when CUDA is available.
+If you see warnings about `pin_memory` without an accelerator, they are benign on CPU; the dataloaders are intended to disable `pin_memory` when CUDA is unavailable.
 
-### Issue: CUDA not detected despite having GPU
+### CUDA not detected
 
-**Solution:** Ensure you installed PyTorch with CUDA support:
-```bash
-# Uninstall CPU version
-pip uninstall torch torchvision torchaudio -y
+Reinstall PyTorch with the correct CUDA wheel index (see Installation), then run `python scripts/check_gpu.py`.
 
-# Install CUDA 12.4 version
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+### Web UI shows the old page or missing assets
 
-# Verify
-python check_gpu.py
-```
+Run `npm run build` inside `frontend/` so `frontend/dist/` exists. Ensure you restart `web_app.py` after rebuilding.
 
 ---
 
----
+## Limitations
 
-## 10. Limitations & Disclaimer
-
-- Predictions are based solely on the dataset used for training.  
-- **Not a certified medical device** and must not be used as the sole basis for any treatment decisions.  
-- Users (especially medical practitioners) should treat this as a **supporting tool** only.
+- Model quality depends on training data, splits, and hyperparameters; reported metrics in your own runs are authoritative for your checkpoint.
+- Class imbalance and dataset bias (common in dermatology datasets) can affect real-world behavior.
+- The web server bundled with Flask is intended for **development and demos**; use a production WSGI server and hardening for public deployment.
 
 ---
 
-## 11. Future Work
+## Future work
 
-- Add more skin conditions (eczema, psoriasis, acne, etc.)
-- Cloud or container-based deployment (e.g., Docker + cloud GPU)
-- Android mobile app for on-device or cloud-assisted prediction
-- User accounts and prediction history
-- Real-time camera capture in UI
+- Additional lesion categories and external validation cohorts.
+- Container images and cloud GPU deployment automation.
+- Mobile or edge clients consuming the same API.
+- Auditable logging and optional authenticated prediction history.
 
 ---
 
-## 12. Acknowledgements
+## Acknowledgements
 
-- Public skin lesion datasets such as **HAM10000**
-- Research literature and reference paper(s) included in `References/`
-- Academic guides and mentors for the SEPM project
-
+- **HAM10000** and related public dermatology imaging resources used for research and education.
+- Course staff, mentors, and peers supporting the original SEPM / academic project context.
+- Open-source ecosystem: PyTorch, Flask, Vite, React, Framer Motion.
