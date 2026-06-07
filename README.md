@@ -1,4 +1,21 @@
-# Skin Cancer Disease Prediction System
+<div align="center">
+
+# Skin Cancer Prediction System
+
+**Deep Learning for Dermatological Image Classification**
+
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?logo=tensorflow&logoColor=white)](https://tensorflow.org/)
+[![Keras](https://img.shields.io/badge/Keras-CNN-D00000?logo=keras)](https://keras.io/)
+[![Medical AI](https://img.shields.io/badge/Medical-AI-red?logo=cross)](https://en.wikipedia.org/wiki/Artificial_intelligence_in_healthcare)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/Adit-Jain-srm/Skin-Cancer-Disease-Prediction-System)](https://github.com/Adit-Jain-srm/Skin-Cancer-Disease-Prediction-System)
+
+*Early detection of skin cancer using convolutional neural networks on dermatoscopic images.*
+
+</div>
+
+---
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Adit-Jain-srm/Skin-Cancer-Disease-Prediction-System)
 
