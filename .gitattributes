@@ -1,0 +1,4 @@
+*.h5 linguist-generated
+*.pkl linguist-generated
+*.ipynb linguist-generated
+data/** linguist-vendored
